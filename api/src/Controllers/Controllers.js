@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { Dog, Temperaments} = require('../db')
 
 module.exports = {
     
