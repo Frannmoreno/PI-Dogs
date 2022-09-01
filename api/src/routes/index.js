@@ -1,27 +1,30 @@
 const { Router } = require('express');
+const { getAllDogs } = require('../Controllers/Controllers')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-var express = require('express');
-const { getAllDogs } = require('../Controllers/Controllers');
-
+const { Dog, Temperaments} = require('../db')
 const router = Router();
+const axios = require('axios')
+
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/dogs', async (req,res) => {
-    const { name } = req.query 
-    if (name) {
-        let allDogs = await getAllDogs()
-        let dogName = await allDogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-        if (dogName.length){
-            return res.status(200).json(dogName)
+
+router.get('/dogs', async (req,res) => { 
+        const name = req.query.name
+        const allDogs = await getAllDogs()
+        if(name) {
+            const dogSelected = allDogs.filter((dog) => dog.name.toLowerCase().includes(name.toLowerCase()))
+            if (dogSelected.length){
+                return res.status(201).send(dogSelected)
+            } else {
+                return res.status(404).send({error: 'The dog is at the park'})
+            }
         } else {
-            return res.status(404).json({error: 'The dog in nos avaleable'})
-    }
-  }
-  return res.status(200).json(getAllDogs())
-})
+            return res.status(200).json(allDogs)
+        }
+    })
 
 
 router.get('/dog?name', async(req,res) => {
