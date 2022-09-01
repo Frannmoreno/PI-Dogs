@@ -1,12 +1,11 @@
 const axios = require('axios');
 const { Dog, Temperaments} = require('../db')
 
-module.exports = {
-    
-    getApi: async function () {
-        const dogsURL = await axios.get('https://api.thedogapi.com/v1/breeds');
-        let dogsInfo = await dogsURL.data.map(dog => {
-            return {
+
+const getApi = async () => {
+    const dogsURL = await axios.get('https://api.thedogapi.com/v1/breeds');
+    let dogsInfo = await dogsURL.data.map((dog) => {
+        return {
                 id: dog.id,
                 name: dog.name,
                 life_span: dog.life_span,
@@ -17,24 +16,24 @@ module.exports = {
             }
         })
         return dogsInfo
-    },
+    }
 
-    getDB: async function () {
+const getDB = async () => {
         return await Dog.findAll({
             include: {
                 model: Temperaments,
                 atributes: ['name'],
-                throught: {
-                    atributes: [],
+                through: {
+                    attributes: [],
                 }
             }
         })
-    },
+    }
 
-    getAllDogs: async function () {
+const getAllDogs = async () => {
         let dbInfo = await getDB();
         let apiInfo = await getApi();
-        let allInfo = dbInfo.concat(apiInfo);
+        let allInfo = apiInfo.concat(dbInfo);
         return allInfo 
-       }
-};
+    }
+    module.exports = { getAllDogs };
