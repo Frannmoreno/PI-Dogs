@@ -1,0 +1,58 @@
+.card{
+    background-color: rgb(135, 205, 239);
+    width: 800px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    border: 4px inset #1ca494;
+        border-radius: 9px 27px 18px 11px;
+    }
+    
+    .cardImg{
+        margin-left: 2%;
+        align-self: center;
+        width: 200px;
+    }
+    
+    .cardInfo{
+        box-shadow: 19px 11px 26px 10px rgba(0, 0, 0, 0.78);
+        display: flex;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        letter-spacing: 1.8px;
+        word-spacing: 1.6px;
+        color: #4A3401;
+        font-weight: normal;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+        background-color: rgb(166, 208, 229);
+        border-radius: 0px 40px 40px 0px;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 550px;
+    }
+    
+    .titleStyle{
+        background-color: #f5f1ed;
+        text-decoration: none;
+        justify-content: space-around;
+            color: #252323;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            font-weight: 500;
+        
+        
+    }
+    
+    .titleStyle > a {
+        justify-content: space-around;
+            color: #252323;
+            text-decoration: none;
+            font-size: 1.0em;
+            text-transform: uppercase;
+            font-weight: 450;
+            /* display: inline-block; */
+            width: 80px;
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+    }

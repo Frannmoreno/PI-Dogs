@@ -1,0 +1,144 @@
+.pagination{
+    margin-top: 0;
+    padding-top: 10px;
+}
+
+.background{
+    background-image: url('./Images/FondoHome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content:space-between;
+}
+.btn{
+    margin: 0 50%;
+    margin-top: 0.5em;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    }
+    
+.btn:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+    }
+    
+.btn:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+    }
+    
+.btn:hover {
+      box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+    }
+
+.containerFilters{
+    margin: 0 25%;
+    width: 190%;
+    margin-top: 1.3rem;
+    border-radius: 25px;
+    }
+    
+.containerFilters select{
+    padding: 0.5rem 0.9rem;
+    border: none;
+    box-shadow: 5px 5px 5px 0.5px rgba(0,0,0,0.4);
+    background-color: #27ae60;
+    color: white;
+    cursor: pointer;
+    }
+
+.containerFilters select:first-child{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    }
+    
+.containerFilters select:last-child{
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    }
+
+.headerContainerLeft{
+    margin: 0 6%;
+    padding-bottom: 0.5rem;
+    display: block;
+    }
+
+.headerLeft{
+    padding-top: 0.6rem;
+    }
+
+.logo{
+    margin: 0 50%;
+    background-image: url("./Images/Coraje el perro cobarde.jpg.jpg");
+    background-size: cover;
+    margin-top: 0.5em;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    }
+.logo:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+    }
+        
+.logo:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+    }
+        
+.logo:hover {
+    box-shadow: rgb(105, 216, 216) 0 6px 12px;
+    }

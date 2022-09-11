@@ -1,0 +1,83 @@
+.background{ 
+    background-image: url('./Images/10796.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn{
+    margin-top: 0.5em;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    }
+    
+.btn:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+    }
+    
+.btn:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+    }
+    
+.btn:hover {
+      box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+    }
+
+.general{
+    margin-top: 5%;
+    display: flex;
+    opacity: 90%;
+    border: 4px inset #1C6EA4;
+    border-radius: 9px 27px 18px 11px;
+    border-image: 10%
+}
+
+.dogdetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 1%;
+    width: 100%;
+    color: #252323 ;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 35px;
+            letter-spacing: 1.8px;
+            word-spacing: 1.6px;
+    /* background-color: red; */
+}
+.dogdetail > h1 {
+    /* align-self: center; */
+}

@@ -1,0 +1,40 @@
+.back{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.list {
+    display: inline-flex;
+    
+}
+.list > button {
+    box-shadow: inset 0px 0px 0px 0px #f7c5c0;
+    background: linear-gradient(to bottom, rgb(31, 166, 184) 5%, rgb(40, 132, 186) 100%);
+    background-color: #fc8d83;
+    border-radius: 6px;
+    border: 1px solid rgb(72, 183, 235);
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #04f3eb;
+}
+
+.list > button:hover {
+    background: linear-gradient(to bottom, #8605bd 5%, #8612bc 100%);
+    background-color: #063593;
+}
+
+.list > button:active {
+    position: relative;
+    top: 1px;
+}
