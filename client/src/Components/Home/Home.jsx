@@ -129,7 +129,7 @@ export default function Home () {
                     return(
                         <div className={style.main_container} key={el.id}>
                                 {
-                                    <Card key={el.id} id={el.id} image={el.image} name={el.name} temperament={el.createdInDb ? el.temperaments[0].name : el.temperament}  weight_min={el.weight_min} weight_max={el.weight_max}/>
+                                    <Card key={el.id} id={el.id} image={el.image} name={el.name} temperament={el.temperament}  weight_min={el.weight_min} weight_max={el.weight_max}/>
                                 }
                         </div>
                     )

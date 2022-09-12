@@ -7,44 +7,44 @@ import style from './DogCreate.module.css'
 const validate = (input) => {
     let errors = {}
     if(!input.name){
-        errors.name = 'Indica un nombre,  humano! WOOF!!!'
+        errors.name = 'Must be a name'
     }
     if(!input.height || input.height <= 0){
-        errors.height = 'Indica un numero mayor , ni mis cachorros miden eso WOOF!!!'
+        errors.height = 'The number must be grather'
     }
     if(input.height){
         if (!/^[0-9]*$/){
-            errors.height = 'Woof... ¿Como pusiste letras? Solo numeros WOOF WOOF WOOF WOOF WOOF AARRGGHHH'
+            errors.height = 'It must be only numbers'
         }
     }
     if (!input.weight_min || input.weight_min <= 0){
-        errors.weight_min = 'Indica un numero mayor , ni mis cachorros pesan eso WOOF!!!'
+        errors.weight_min = 'The number must be grather'
     }
 
     if(input.weight_min){
         if(input.weight_max){
             if (!/^[0-9]*$/) {
-                errors.weight_min = 'Woof... ¿Como pusiste letras? Solo numeros WOOF WOOF WOOF WOOF WOOF AARRGGHHH'
+                errors.weight_min = 'It must be only numbers'
             }
         }
     }
     
     if (!input.weight_max || input.weight_max <= 0){
-        errors.weight_max = 'Indica un numero mayor , ni mis cachorros pesan eso WOOF!!!'
+        errors.weight_max = 'The number must be grather'
     }
     if(input.weight_max){
         if (!/^[0-9]*$/) {
-            errors.weight_max = 'Woof... ¿Como pusiste letras? Solo numeros WOOF WOOF WOOF WOOF WOOF AARRGGHHH'
+            errors.weight_max = 'It must be only numbers'
         }
     }
 
     if (!input.lifeTime || input.lifeTime <= 0){
-        errors.lifeTime = '... De verdad espero que nadie tenga ese tiempo de vida, woof triste :c'
+        errors.lifeTime = 'The number must be grather'
     }
     if(input.lifeTime){
 
         if (!/^[0-9]*$/) {
-            errors.lifeTime = 'Woof... ¿Como pusiste letras? Solo numeros WOOF WOOF WOOF WOOF WOOF AARRGGHHH'
+            errors.lifeTime = 'It must be only numbers'
         }
     }
     return errors
@@ -104,7 +104,7 @@ export default function CreateDog () {
         console.log(input)
         dispatch(postDog(input))
 
-        alert("Guau guau creado con croquetas")
+        alert("The dog was created")
         setInput({
             name: "",
             height: 0,
@@ -125,61 +125,65 @@ export default function CreateDog () {
 
     return(
 
-        <div className='background'>
+        <div className={style.background}>
             
+            <div className={style.titulo}>
             <Link to ="/home">
-                <button className='btn'>
-                    Volver
+                <button className={style.btn}>
+                    HOME
                 </button>
             </Link>
-            <h1>
-                Crear Guau Guau 
-            </h1>
+                <h2>
+                    CREATE DOG
+                </h2>
+            </div>
 
-        <div className='contenedor'>
+        <div className= {style.contenedor}>
                     
-            <form className='formStyle' onSubmit={e => handleSubmit(e)} >
+            <form className= {style.formStyle} onSubmit={e => handleSubmit(e)} >
 
-        <div>
-            <h3>Nombre:</h3>
-            <input className='numInput' type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
-
-        </div>
-
-        <div>
-            <h3>Altura</h3>
-            <input className='numInput' type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
-        </div>
-
-        <div>
-        <h3>Peso minimo </h3>
-        <input className='numInput' type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
-        </div>
-
-        <div>
-        <h3>Peso Maximo </h3>
-        <input className='numInput' type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
-        </div>
-
-
-        <div>
-            <h3>Tiempo de vida </h3>
-            <input className='numInput' type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
-        </div>
-        <div>
+        <div className = {style.items}>
+            <h3>NAME:</h3>
+            <input className={style.numInput} type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
 
         </div>
-            <h2>Temperamentos</h2>
-            <select  className='moodStyle' onChange={e => handleSelect(e)} >
-                <option value="all">prototemperament</option>
-                {
-                    allTemperaments.map(e => {
-                        return (
-                            <option value={e.name} key={e.id}>{e.name}</option>
-                            )
-                        })
-                    }
-            </select>
+
+        <div className = {style.items}>
+            <h3 >HEIGHT:</h3>
+            <input className={style.numInput} type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
+        </div>
+
+        <div className = {style.items}>
+        <h3 >MIN WEIGHT: </h3>
+        <input className={style.numInput} type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
+        </div>
+
+        <div className = {style.items}>
+        <h3 >MAX WEIGHT: </h3>
+        <input className={style.numInput} type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
+        </div>
+
+
+        <div className = {style.items}>
+            <h3>LIFE SPAN:</h3>
+            <input className={style.numInput} type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
+        </div>
+        <div>
+
+        </div>
+            <div className = {style.items}>
+                <h3>TEMPERAMENTS</h3>
+                <select  className={style.numInput} onChange={e => handleSelect(e)} >
+                    <option value="all">prototemperament</option>
+                    {
+                        allTemperaments.map(e => {
+                            return (
+                                <option value={e.name} key={e.id}>{e.name}</option>
+                                )
+                            })
+                        }
+                </select>
+            </div>
 
                 {errors && 
                 (errors.name ||
@@ -195,29 +199,29 @@ export default function CreateDog () {
                 input.lifeTime <= 0 ||
                 !input.temperament.length)
                 ?
-                <h3>Guau Guau no puede ser creado aún</h3>
+                <h3>THE DOG CAN NOT BE CREATED YET</h3>
                 :
-                <button className='btn' type='submit'>Crear guau guau</button>
+                <button className={style.btn} type='submit'>CREATE</button>
                 
             }
                 </form>
          
-                  <div className='moodDiv'>
+                  <div className= {style.moodDiv} >
                         {input.temperament.map((d , i) => {
                             return (
                                 <div key={i++}>
                             <h2 > {d} </h2>
-                            <button className='searchBtn' onClick={() => handleErase(d)}>X</button>
+                            <button className= {style.eraserbtn} onClick={() => handleErase(d)}>X</button>
                             </div>
                                 )
                             })
                         }
                         </div>
                         
-                <div className='errorStyle'>
-                <h1>Errores :</h1>
+                <div className= {style.errorStyle}>
+                <h2>ERRORS :</h2>
                 <div>
-                <div className='errorStyle'> 
+                <div className= {style.errorStyle}> 
 
             <h2>
              {errors.name && (<p> {errors.name} </p>)}
@@ -238,7 +242,6 @@ export default function CreateDog () {
             <h2>
             {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
             </h2>
-                <h1>Esto debe quedar vacío para crear tu guau guau</h1>
 
                 </div>
 
