@@ -20,7 +20,7 @@ const getApi = async () => {
     }
 
 const getDB = async () => {
-        return await Dog.findAll({
+         let perroMapeado1 =  await Dog.findAll({
             include: {
                 model: Temperament,
                 atributes: ['name'],
@@ -29,6 +29,28 @@ const getDB = async () => {
                 }
             }
         })
+        perroMapeado1 = perroMapeado1.map(dog => {return {
+            id: dog.id,
+            name:dog.name,
+            height: dog.height,
+            weight_min: dog.weight_min,
+            weight_max: dog.weight_max,
+            lifeTime: dog.lifeTime,
+            image: dog.image,
+            createdInDb: dog.createdInDb,
+            temperament : dog.temperaments.map(e => {return e.name}).join(',')
+        }})
+        console.log(perroMapeado1)
+        return perroMapeado1
+        // await Dog.findAll({
+        //     include: {
+        //         model: Temperament,
+        //         atributes: ['name'],
+        //         through: {
+        //             attributes: [],
+        //         }
+        //     }
+        // })
     }
 
 const getAllDogs = async () => {
