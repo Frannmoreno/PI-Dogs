@@ -9,6 +9,7 @@
 
 .list {
     display: inline-flex;
+    padding: 0.3rem;
     
 }
 .list > button {

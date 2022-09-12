@@ -1,17 +1,24 @@
-.pagination{
-    margin-top: 0;
-    padding-top: 10px;
-}
-
 .background{
     background-image: url('./Images/FondoHome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
     justify-content:space-between;
+    min-height: 100vh;
 }
+.arreglar{
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    margin-top: 0;
+    padding-top: 10px;
+}
+
+
 .btn{
-    margin: 0 50%;
+    width: 9rem;
+    margin: 1rem;
     margin-top: 0.5em;
     appearance: none;
     backface-visibility: hidden;
@@ -59,10 +66,12 @@
     }
 
 .containerFilters{
-    margin: 0 25%;
-    width: 190%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
     margin-top: 1.3rem;
-    border-radius: 25px;
     }
     
 .containerFilters select{
@@ -85,17 +94,25 @@
     }
 
 .headerContainerLeft{
-    margin: 0 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding-bottom: 0.5rem;
-    display: block;
     }
 
-.headerLeft{
+
+.arreglo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    }
+
+    .headerLeft{
     padding-top: 0.6rem;
     }
 
 .logo{
-    margin: 0 50%;
     background-image: url("./Images/Coraje el perro cobarde.jpg.jpg");
     background-size: cover;
     margin-top: 0.5em;
@@ -142,3 +159,10 @@
 .logo:hover {
     box-shadow: rgb(105, 216, 216) 0 6px 12px;
     }
+
+.main_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}

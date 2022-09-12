@@ -1,6 +1,12 @@
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .searchbar_container{
     height: 30px;
-    width: 200%;
+    width: 100%;
+
 }
 
 .searchbar{

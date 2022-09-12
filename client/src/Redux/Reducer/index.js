@@ -42,21 +42,20 @@ function rootReducer (state = initialState, action) {
           };
     
       case GET_ALL_TEMPERAMENTS:
-        const arreglado = action.payload.map(el => el.name)
         return {
           ...state,
-          temperaments: arreglado
-      };
+          temperaments: action.payload
+        };
       
       case FILTER_BY_NAME:
         const filterDogs = action.payload === "A-Z" ? state.allDogs.sort((a,b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             return 0;
           })
         : state.allDogs.sort((a,b) => {
-            if (a.name > b.name) return -1;
-            if (a.name < b.name) return 1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
             return 0;
           });
         return {

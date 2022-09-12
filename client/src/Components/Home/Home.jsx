@@ -65,18 +65,18 @@ export default function Home () {
     return (
 <div className = {style.background}>
     <header>
-        <Link to="/">
-            <button className={style.logo}>Dogpedia</button> {/* logo del home */}
-        </Link>
+        <div className={style.arreglar}>
+            <Link to="/">
+                <button className={style.logo}>Dogpedia</button> 
+            </Link>
+        </div>
     <div className={style.headerContainerLeft}>  
-             <div className = {style.arrglo}>
+             <div className = {style.arreglo}>
                     <button  className = {style.btn} onClick={e =>{handleClick(e)}}> Get dogs again</button>
+                    <Link to='/create'>
+                        <button className = {style.btn} >Create Dog</button>
+                    </Link>
              </div>
-             <div className = {style.arrglo2}>
-                <Link to='/create'>
-                    <button className = {style.btn} >Create Dog</button>
-                </Link>
-            </div>
         <div className={style.headerLeft}>
             <SearchBar />
             <div className={style.containerFilters}>
@@ -110,7 +110,7 @@ export default function Home () {
                     <option disabled selected defaultValue>Temperaments</option>
                     <option key={1+'e'} value='All'>All</option>
                     {
-                        allTemperaments?.map(temp => (
+                        allTemperaments.map(temp => (
                             <option value={temp.name} key={temp.id}>{temp.name}</option>
                         ))
                     }
@@ -123,15 +123,14 @@ export default function Home () {
             
     <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/>
             
-         <div className={style.main_container}>  {/* //render de las cartas */}
+         <div>  
             <div className={style.container_cards} >  
                 {currentDogs?.map((el) => {
                     return(
-                        <div key={el.id}>
+                        <div className={style.main_container} key={el.id}>
                                 {
                                     <Card key={el.id} id={el.id} image={el.image} name={el.name} temperament={el.createdInDb ? el.temperaments[0].name : el.temperament}  weight_min={el.weight_min} weight_max={el.weight_max}/>
                                 }
-                                {/* <Card key={el.id} image={el.image} name={el.name} temperaments={el.temperaments.name ? el.temperaments.map(el => el.name) : el.temperaments}/> */}
                         </div>
                     )
                 })}

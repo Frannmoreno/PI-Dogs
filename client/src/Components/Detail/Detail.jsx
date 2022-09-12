@@ -33,7 +33,7 @@ export default function Detail(props) {
         <h2> Height :{dog[0].height} CM</h2>
         <div>
         <h2>Temperaments :</h2>
-        <h2>{!dog.createdInDb? dog[0].temperament  : dog.Temperaments.map(d => d.name + " ")}</h2>
+        <h2>{dog[0].createdInDb? dog[0].temperaments[0].name  : dog[0].temperament}</h2>
         </div>
         </div>
 

@@ -90,10 +90,13 @@ export default function CreateDog () {
     },[dispatch])
 
     const handleSelect = (e) => {
-        setInput({
-            ...input,
-            temperament : [...input.temperament, e.target.value]
-        })
+        if(!input.temperament.includes(e.target.value)) {
+            setInput({
+                ...input,
+                temperament : [...input.temperament, e.target.value]
+            })
+        }
+
     }
 
     const handleSubmit = (e) =>{
@@ -171,9 +174,8 @@ export default function CreateDog () {
                 <option value="all">prototemperament</option>
                 {
                     allTemperaments.map(e => {
-                        console.log()
                         return (
-                            <option value={e.name} key={e.name}>{e.name}</option>
+                            <option value={e.name} key={e.id}>{e.name}</option>
                             )
                         })
                     }
