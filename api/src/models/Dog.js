@@ -38,6 +38,7 @@ module.exports = (sequelize) => {
 
   image : {
     type :DataTypes.STRING,
+    defaultValue: 'https://www.quever.news/u/fotografias/m/2021/11/13/f608x342-18737_48460_0.jpg'
   },
 
   createdInDb : {

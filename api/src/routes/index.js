@@ -10,7 +10,7 @@ const e = require('express');
 
 
 // Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+ router.use('/temperaments', e.json());
 
 
 router.get('/dogs', async (req,res) => { 
@@ -29,35 +29,13 @@ router.get('/dogs', async (req,res) => {
     })
 
     router.get('/dogs/:idRaza', async (req, res) => {
-        const DbDogId = async (id) => {
-            let dog = await Dog.findbyPk(id, {
-                include: {
-                    model: Temperament,
-                    atributes: ['name'],
-                    through: {
-                        atributes: []
-                    }
-                }
-            })
-        
-            if (dog === null) {
-                throw new Error ('The dog is at the park')
-            }
-        
-            return dog
-        }
         const { idRaza } = req.params
         const allDogs = await getAllDogs()
         try {
-            if(idRaza.length > 5) {
-                let dbDog = await DbDogId(idRaza)
-                return res.status(200).json(dbDog)
-            } else {
                 const dogSelected = allDogs.filter((dog) => dog.id == idRaza)
                 if (dogSelected.length){
                     return res.status(200).send(dogSelected)
                 } 
-            }
         } catch (error) {
             return res.status(404).send({error: 'The dog is at the park'})
         }
@@ -66,26 +44,24 @@ router.get('/dogs', async (req,res) => {
     
     router.get('/temperaments', async (req,res) => {
      try {
-        let temperament = await Temperament.findAll()
-            if(temperament.length === 0){
+        // let temperament = await Temperament.findAll()
+        //     if(temperament.length === 0){
             const api = await axios.get('https://api.thedogapi.com/v1/breeds')
-            let perros =  api.data.map (el => el.temperament)
-            perros = perros.join()
-            perros = perros.split(",")
-            perros = perros.map(e => e.trim())
-            perros.forEach( async (e) => {
+            const perros = await api.data.map (el => el.temperament)
+            let perrosSplit = await perros.join().split(',')
+            let perrosTrim = await perrosSplit.map(e => e.trim())
+            await perrosTrim.forEach( async (e) => {
                 if(e.length > 0){
                     await Temperament.findOrCreate({
                         where : {name : e}
                     })
                 }
             })
+            //   }
             const allTemperament = await Temperament.findAll()
-            console.log(allTemperament)
+            // console.log(allTemperament)
             return res.status(200).json(allTemperament)
-            }
-            
-         }catch (error){
+        }catch (error){
              res.status(404).send({error: 'There are not temperaments'})
          }
     })
