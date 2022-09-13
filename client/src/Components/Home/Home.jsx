@@ -124,17 +124,22 @@ export default function Home () {
     <Paginate dogsPerPage={dogsPerPage} allDogs={allDogs.length} paginado={paginado}/>
             
          <div>  
-            <div className={style.container_cards} >  
-                {currentDogs?.map((el) => {
-                    return(
-                        <div className={style.main_container} key={el.id}>
-                                {
-                                    <Card key={el.id} id={el.id} image={el.image} name={el.name} temperament={el.temperament}  weight_min={el.weight_min} weight_max={el.weight_max}/>
-                                }
-                        </div>
-                    )
-                })}
-            </div>
+            
+                {Object.keys(currentDogs).length ? 
+                    <div className={style.container_cards} >  
+                    {currentDogs?.map((el) => {
+                        return(
+                            <div className={style.main_container} key={el.id}>
+                            {
+                                <Card key={el.id} id={el.id} image={el.image} name={el.name} temperament={el.temperament}  weight_min={el.weight_min} weight_max={el.weight_max}/>
+                            }
+                            </div>
+                            )
+                        })}
+            </div> :
+                    <div>
+                        <h1>LOADING...</h1>
+                    </div>}
         </div>
 </div>
 )}

@@ -90,12 +90,10 @@ export default function CreateDog () {
     },[dispatch])
 
     const handleSelect = (e) => {
-        if(!input.temperament.includes(e.target.value)) {
             setInput({
                 ...input,
                 temperament : [...input.temperament, e.target.value]
             })
-        }
 
     }
 
