@@ -59,7 +59,6 @@
 .general{
     margin-top: 5%;
     display: flex;
-    opacity: 90%;
     border: 4px inset #1C6EA4;
     border-radius: 9px 27px 18px 11px;
     border-image: 10%
