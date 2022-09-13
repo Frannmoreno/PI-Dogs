@@ -45,6 +45,7 @@
     background: red;
     color: white;
     border-radius: 0.3rem;
+    cursor: pointer;
  }
 
 .numInput{
