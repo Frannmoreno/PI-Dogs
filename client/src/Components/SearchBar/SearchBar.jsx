@@ -4,7 +4,7 @@ import { getDogName } from '../../Redux/Actions'
 import { useHistory } from "react-router-dom";
 import style from './SearchBar.module.css'
 
-export default function SearchBar () {
+export default function SearchBar ({paginado}) {
     const dispatch = useDispatch();
     const [searchDog, setSearchDog] = useState('')
     const history = useHistory();
@@ -17,9 +17,11 @@ export default function SearchBar () {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(searchDog)
         dispatch(getDogName(searchDog))
         setSearchDog('')
         history.push('/home')
+        paginado(1)
     }
 
     return (

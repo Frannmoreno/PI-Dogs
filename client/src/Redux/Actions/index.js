@@ -43,7 +43,7 @@ export function getDogName(name) {
                 payload: json.data
             })
         } catch(error){
-            alert('Perro no encontrado')
+            alert('The dog could not be found')
         }
     }
 }
@@ -63,9 +63,13 @@ export function getDog(id) {
 }
 
 export function postDog (data){
-    return async function () {
-        const posted = await axios.post('/dogs', data);
-        return posted
+    try{
+        return async function () {
+            const posted = await axios.post('/dogs', data);
+            return posted
+        }
+    } catch(error) {
+        alert('The dog could not be created')
     }
 }
  

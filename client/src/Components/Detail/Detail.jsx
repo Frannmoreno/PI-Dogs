@@ -29,7 +29,7 @@ export default function Detail(props) {
         
         <h1> Name : {dog[0].name}</h1>
         <h2> Life Temp : {dog[0].lifeTime}</h2>
-        <h2> Min Weight :{dog[0].weight_min}  /  Max weight :{dog[0].weight_max} KG</h2>
+        <h2> Weight :{dog[0].weight_min} - {dog[0].weight_max} KG</h2>
         <h2> Height :{dog[0].height} CM</h2>
         <div>
         <h2>Temperaments :</h2>

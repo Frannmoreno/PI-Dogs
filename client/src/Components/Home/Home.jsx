@@ -33,9 +33,7 @@ export default function Home () {
     },[dispatch])
 
     function handleClick (e) {
-        e.preventDefault();
-        dispatch(getAllDogs())
-        setCurrentPage(1);
+        window.location.reload(false);
     }
 
     function handlerFilterCreated (e) {
@@ -78,7 +76,7 @@ export default function Home () {
                     </Link>
              </div>
         <div className={style.headerLeft}>
-            <SearchBar />
+            <SearchBar paginado={paginado}/>
             <div className={style.containerFilters}>
                 <select onChange={e => handlerFilterName(e)}>
                     <option disabled selected defaultValue>
@@ -125,7 +123,7 @@ export default function Home () {
             
          <div>  
             
-                {Object.keys(currentDogs).length ? 
+                {Object.keys(allDogs).length ? 
                     <div className={style.container_cards} >  
                     {currentDogs?.map((el) => {
                         return(

@@ -9,16 +9,29 @@ const validate = (input) => {
     if(!input.name){
         errors.name = 'Must be a name'
     }
-    if(!input.height || input.height <= 0){
-        errors.height = 'The number must be grather'
+    if(!input.height_min || input.height_min <= 0){
+        errors.height_min = 'The min height must be bigger'
     }
+    if(!input.height_max || input.height_max <= 0){
+        errors.height_max = 'The max height must be bigger'
+    }
+
+    if(input.height_min >= input.height_max){
+        errors.especial1 = 'The height min can not be bigger or equal than the max height'
+    }
+
+    if(input.weight_min >= input.weight_max){
+        errors.especial2 = 'The weight min can not be bigger or equal than the max height'
+    }
+
+
     if(input.height){
         if (!/^[0-9]*$/){
             errors.height = 'It must be only numbers'
         }
     }
     if (!input.weight_min || input.weight_min <= 0){
-        errors.weight_min = 'The number must be grather'
+        errors.weight_min = 'The min weight must be bigger'
     }
 
     if(input.weight_min){
@@ -30,7 +43,7 @@ const validate = (input) => {
     }
     
     if (!input.weight_max || input.weight_max <= 0){
-        errors.weight_max = 'The number must be grather'
+        errors.weight_max = 'The max weight must be bigger'
     }
     if(input.weight_max){
         if (!/^[0-9]*$/) {
@@ -39,17 +52,18 @@ const validate = (input) => {
     }
 
     if (!input.lifeTime || input.lifeTime <= 0){
-        errors.lifeTime = 'The number must be grather'
+        errors.lifeTime = 'The life span must be grather'
     }
     if(input.lifeTime){
-
         if (!/^[0-9]*$/) {
             errors.lifeTime = 'It must be only numbers'
         }
     }
+
     return errors
 
 }
+
 
 
 export default function CreateDog () {
@@ -64,7 +78,8 @@ export default function CreateDog () {
 
     const [input, setInput] = useState({
         name : "",
-        height:0,
+        height_min:0,
+        height_max:0,
         weight_min:0,
         weight_max:0,
         lifeTime:0,
@@ -90,12 +105,15 @@ export default function CreateDog () {
     },[dispatch])
 
     const handleSelect = (e) => {
-            setInput({
-                ...input,
-                temperament : [...input.temperament, e.target.value]
-            })
-
+            if(!input.temperament.includes(e.target.value)){
+                setInput({
+                    ...input,
+                    temperament : [...input.temperament, e.target.value]
+                })
+            }
     }
+
+    console.log(handleSelect)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -105,7 +123,8 @@ export default function CreateDog () {
         alert("The dog was created")
         setInput({
             name: "",
-            height: 0,
+            height_min: 0,
+            height_max: 0,
             weight_min: 0,
             weight_max: 0,
             lifeTime: 0,
@@ -142,37 +161,42 @@ export default function CreateDog () {
 
         <div className = {style.items}>
             <h3>NAME:</h3>
-            <input className={style.numInput} type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
+            <input required className={style.numInput} type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
 
         </div>
 
         <div className = {style.items}>
-            <h3 >HEIGHT:</h3>
-            <input className={style.numInput} type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
+            <h3 >MIN HEIGHT:</h3>
+            <input min='0' className={style.numInput} type='number' value={input.height_min} name='height_min' onChange = { e => handleChange(e)}  />
+        </div>
+
+        <div className = {style.items}>
+            <h3 >MAX HEIGHT:</h3>
+            <input  min='0' className={style.numInput} type='number' value={input.height_max} name='height_max' onChange = { e => handleChange(e)}  />
         </div>
 
         <div className = {style.items}>
         <h3 >MIN WEIGHT: </h3>
-        <input className={style.numInput} type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
+        <input  min='0' className={style.numInput} type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
         </div>
 
         <div className = {style.items}>
         <h3 >MAX WEIGHT: </h3>
-        <input className={style.numInput} type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
+        <input min='0' className={style.numInput} type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
         </div>
 
 
         <div className = {style.items}>
             <h3>LIFE SPAN:</h3>
-            <input className={style.numInput} type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
+            <input min='0' className={style.numInput} type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
         </div>
         <div>
 
         </div>
             <div className = {style.items}>
                 <h3>TEMPERAMENTS</h3>
-                <select  className={style.numInput} onChange={e => handleSelect(e)} >
-                    <option value="all">prototemperament</option>
+                <select  className={style.numInput} onChange={handleSelect} >
+                    <option value='all' disabled selected defaultValue>prototemperament</option>
                     {
                         allTemperaments.map(e => {
                             return (
@@ -185,19 +209,25 @@ export default function CreateDog () {
 
                 {errors && 
                 (errors.name ||
-                errors.height ||
+                errors.height_min ||
+                errors.height_max ||
                 errors.weight_min||
                 errors.weight_max ||
                 errors.lifeTime ||
-                errors.temperament||
+                errors.especial1 ||
+                errors.especial2 ||
                 !input.name.length ||
-                input.height <= 0||
+                input.height_min <= 0||
+                input.height_max <= 0||
                 input.weight_min <= 0 ||
                 input.weight_max <= 0 ||
                 input.lifeTime <= 0 ||
+                input.height_min >= input.height_max ||
+                input.weight_min >= input.weight_max ||
                 !input.temperament.length)
                 ?
-                <h3>THE DOG CAN NOT BE CREATED YET</h3>
+
+                <div className={style.btnh2} >THE DOG CAN NOT BE CREATED YET</div>
                 :
                 <button className={style.btn} type='submit'>CREATE</button>
                 
@@ -208,7 +238,7 @@ export default function CreateDog () {
                         {input.temperament.map((d , i) => {
                             return (
                                 <div key={i++}>
-                            <h2 > {d} </h2>
+                            <div className={style.btnh3}> {d} </div>
                             <button className= {style.eraserbtn} onClick={() => handleErase(d)}>X</button>
                             </div>
                                 )
@@ -226,7 +256,11 @@ export default function CreateDog () {
             </h2>
 
             <h2>
-            {errors.height && (<p> {errors.height} </p>)}
+            {errors.height_min && (<p> {errors.height_min} </p>)}
+            </h2>
+
+            <h2>
+            {errors.height_max && (<p> {errors.height_max} </p>)}
             </h2>
 
             <h2>
@@ -241,12 +275,22 @@ export default function CreateDog () {
             {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
             </h2>
 
-                </div>
+            <h2>
+            {errors.temperament && (<p> {errors.temperament} </p>)}
+            </h2>
+
+            <h2>
+            {errors.especial1 && (<p> {errors.especial1} </p>)}
+            </h2>
+
+            <h2>
+            {errors.especial2 && (<p> {errors.especial2} </p>)}
+            </h2>
 
                 </div>
                 </div>
-                        
-                        </div>
+                </div>
+                </div>
             </div>
     )
 }

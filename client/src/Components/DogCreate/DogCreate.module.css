@@ -1,10 +1,11 @@
 .background{
     background-image: url('./Images/CREATE.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
-    align-items: center;
+    align-items: center center;
     justify-content:space-between;
-    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
 }
 
 .titulo{
@@ -15,12 +16,19 @@
         align-items: center;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .items{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 1.5rem;
-    color: white;
+    color: rgb(70, 42, 42);
+    font-weight: bolder;
 }
 
 .formStyle{
@@ -31,22 +39,29 @@
 }
 
  .moodDiv{
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;
  }
 
- .eraserbtn{
+ .moodDiv div{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+ }
+
+ .eraserbtn{
+    align-items: center;
     background: red;
     color: white;
     border-radius: 0.3rem;
     cursor: pointer;
- }
+    height: 30px;
+    width: 30px;
+}
 
 .numInput{
         padding: 5px;
@@ -61,6 +76,17 @@
             text-shadow: 0px 0px 5px rgba(66, 66, 66, .75);
 }
 
+.btnh2{
+    font-size: 1.5rem;
+    color: rgb(0, 255, 200);  
+    font-family: fantasy;  
+}
+
+.btnh3{
+    font-size: 2rem;
+    color: rgb(255, 0, 200);
+    font-family: fantasy;  
+}
 
 
 .errorStyle{
