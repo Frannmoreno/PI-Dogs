@@ -9,6 +9,11 @@ const validate = (input) => {
     if(!input.name){
         errors.name = 'Must be a name'
     }
+
+    if(input.name && !/^[a-zA-Z]*$/.test(input.name)){
+        errors.name = 'The name can not contain numbers or special caracters'
+    }
+
     if(!input.height_min || input.height_min <= 0){
         errors.height_min = 'The min height must be bigger'
     }
