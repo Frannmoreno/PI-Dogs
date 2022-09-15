@@ -32,12 +32,12 @@ const getDB = async () => {
         perroMapeado1 = perroMapeado1.map(dog => {return {
             id: dog.id,
             name:dog.name,
-            height: dog.height,
             weight_min: dog.weight_min,
             weight_max: dog.weight_max,
             lifeTime: dog.lifeTime,
             image: dog.image,
             createdInDb: dog.createdInDb,
+            height: `${dog.height_min} - ${dog.height_max}`,
             temperament : dog.temperaments.map(e => {return e.name}).join(',')
         }})
         console.log(perroMapeado1)

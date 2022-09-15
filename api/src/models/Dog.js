@@ -18,7 +18,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    height: {
+    height_min: {
+      type : DataTypes.INTEGER,
+      allowNull : false
+    },
+
+    height_max: {
       type : DataTypes.INTEGER,
       allowNull : false
     },

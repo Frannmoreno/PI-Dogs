@@ -16,15 +16,19 @@ const e = require('express');
 router.get('/dogs', async (req,res) => { 
         const name = req.query.name
         const allDogs = await getAllDogs()
-        if(name) {
-            const dogSelected = allDogs.filter((dog) => dog.name.toLowerCase().includes(name.toLowerCase()))
-            if (dogSelected.length){
-                return res.status(200).send(dogSelected)
+        try{
+            if(name) {
+                const dogSelected = allDogs.filter((dog) => dog.name.toLowerCase().includes(name.toLowerCase()))
+                if (dogSelected.length){
+                    return res.status(200).send(dogSelected)
+                } else {
+                    return res.status(404).send({error: 'The dog is at the park'})
+                }
             } else {
-                return res.status(404).send({error: 'The dog is at the park'})
+                return res.status(201).json(allDogs)
             }
-        } else {
-            return res.status(201).json(allDogs)
+        } catch(error){
+            res.status(404).send({error: 'The dog is at the park'})
         }
     })
 
@@ -44,8 +48,6 @@ router.get('/dogs', async (req,res) => {
     
     router.get('/temperaments', async (req,res) => {
      try {
-        // let temperament = await Temperament.findAll()
-        //     if(temperament.length === 0){
             const api = await axios.get('https://api.thedogapi.com/v1/breeds')
             const perros = await api.data.map (el => el.temperament)
             let perrosSplit = await perros.join().split(',')
@@ -57,7 +59,6 @@ router.get('/dogs', async (req,res) => {
                     })
                 }
             })
-            //   }
             const allTemperament = await Temperament.findAll()
             // console.log(allTemperament)
             return res.status(200).json(allTemperament)
@@ -70,7 +71,8 @@ router.post('/dogs', async (req,res) => {
     // try{
         let {
             name,
-            height,
+            height_min,
+            height_max,
             weight_min,
             weight_max,
             lifeTime,
@@ -86,7 +88,8 @@ router.post('/dogs', async (req,res) => {
         } else {
             let DogCreated = await Dog.create({
                 name,
-                height,
+                height_min,
+                height_max,
                 weight_min,
                 weight_max,
                 lifeTime,
@@ -99,10 +102,10 @@ router.post('/dogs', async (req,res) => {
             DogCreated.addTemperament(tempDeDB)
             return res.status(200).send('The dog was created')
         }
+    })
     // } catch (error) {
     //     res.status(404).send({error: 'The dog could not be created'})
     // }
-})
 // const CreateDog = async(name, height, weight_min, weight_max, lifeTime, temperament) => {
 //     try {
 //         let [newDog, created] = await Dog.findOrCreate({
