@@ -48,12 +48,12 @@ function rootReducer (state = initialState, action) {
         };
       
       case FILTER_BY_NAME:
-        const filterDogs = action.payload === "A-Z" ? state.allDogs.sort((a,b) => {
+        const filterDogs = action.payload === "A-Z" ? state.dogs.sort((a,b) => {
             if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             return 0;
           })
-        : state.allDogs.sort((a,b) => {
+        : state.dogs.sort((a,b) => {
             if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
             if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
             return 0;
@@ -62,6 +62,13 @@ function rootReducer (state = initialState, action) {
           ...state,
           dogs: filterDogs,
       };
+
+
+      // case 'FILTER_BY_HEIGHT':
+        
+      //   return{
+      //     ...state
+      //   }
 
       case FILTER_CREATED_DOG:
         const allDogs = state.allDogs;
