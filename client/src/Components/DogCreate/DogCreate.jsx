@@ -26,7 +26,7 @@ const validate = (input) => {
     }
 
     if(input.weight_min >= input.weight_max){
-        errors.especial2 = 'The weight min can not be bigger or equal than the max height'
+        errors.especial2 = 'The weight min can not be bigger or equal than the max weight'
     }
 
 

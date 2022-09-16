@@ -8,7 +8,8 @@ FILTER_BY_TEMPERAMENTS,
 FILTER_BY_WEIGHT,
 FILTER_CREATED_DOG,
 CLEAR_DETAIL,
-POST_DOG
+POST_DOG,
+DELETE_DOG
 } from "../Actions";
 
 
@@ -115,6 +116,14 @@ function rootReducer (state = initialState, action) {
         return {
           ...state
     };
+
+    // case DELETE_DOG:
+    //   return {
+    //     ...state,
+    //     dogs: state.dogs.filter(e => e.id !== action.payload)
+    //   }
+
+
 
       default:
         return state;

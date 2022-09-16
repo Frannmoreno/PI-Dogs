@@ -9,6 +9,7 @@ export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS'
 export const FILTER_CREATED_DOG = 'FILTER_CREATED_DOG'
 export const POST_DOG = 'POST_DOG'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
+export const DELETE_DOG = 'DELETE_DOG'
 
 
 
@@ -61,6 +62,20 @@ export function getDog(id) {
         }
     }
 }
+
+// export function deleteDog(id){
+//     return async function (dispatch){
+//         try{
+//            await axios.delete(`/dogs/${id}`);
+//             return dispatch({
+//                 type: DELETE_DOG,
+//                 payload: id
+//             })
+//         } catch(error){
+//             alert('no se pudo borrar el perro')
+//         }
+//     }
+// }
 
 export function postDog (data){
     try{
