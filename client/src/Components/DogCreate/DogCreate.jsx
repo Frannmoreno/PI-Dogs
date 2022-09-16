@@ -21,11 +21,11 @@ const validate = (input) => {
         errors.height_max = 'The max height must be bigger'
     }
 
-    if(input.height_min >= input.height_max){
+    if(parseInt(input.height_min) >= parseInt(input.height_max)){
         errors.especial1 = 'The height min can not be bigger or equal than the max height'
     }
 
-    if(input.weight_min >= input.weight_max){
+    if(parseInt(input.weight_min) >= parseInt(input.weight_max)){
         errors.especial2 = 'The weight min can not be bigger or equal than the max weight'
     }
 
@@ -172,7 +172,7 @@ export default function CreateDog () {
 
         <div className = {style.items}>
             <h3 >MIN HEIGHT:</h3>
-            <input min='0' className={style.numInput} type='number' value={input.height_min} name='height_min' onChange = { e => handleChange(e)}  />
+            <input min='0'  className={style.numInput} type='number' value={input.height_min} name='height_min' onChange = { e => handleChange(e)}  />
         </div>
 
         <div className = {style.items}>
