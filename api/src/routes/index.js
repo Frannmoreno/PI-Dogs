@@ -10,8 +10,6 @@ const e = require('express');
 
 
 // Configurar los routers
- router.use('/temperaments', e.json());
-
 
 router.get('/dogs', async (req,res) => { 
         const name = req.query.name
@@ -31,6 +29,9 @@ router.get('/dogs', async (req,res) => {
             res.status(404).send({error: 'The dog is at the park'})
         }
     })
+    
+    
+
 
     router.get('/dogs/:idRaza', async (req, res) => {
         const { idRaza } = req.params
@@ -103,29 +104,17 @@ router.post('/dogs', async (req,res) => {
             return res.status(200).send('The dog was created')
         }
     })
-    // } catch (error) {
-    //     res.status(404).send({error: 'The dog could not be created'})
-    // }
-// const CreateDog = async(name, height, weight_min, weight_max, lifeTime, temperament) => {
-//     try {
-//         let [newDog, created] = await Dog.findOrCreate({
-//             where: {
-//                 name,
-//                 height,
-//                 weight_min,
-//                 weight_max,
-//                 lifeTime
-//             }})
-//         let temperaments = await Temperaments.findAll({
-//             where: {name: temperament}
+
+// router.delete('/dogs/:id', async (req,res) => { 
+//     let { id } = req.params;
+//     try{
+//         await Dog.destroy({
+//             where: {id: id}
 //         })
-//         let temperamentsMaped = temperaments.map(e => e.id);
-//         newDog.addTemperaments(temperamentsMaped)
-//         return 'Dog was created'
-//     } catch (error) {
-//         return 'algo salio mal xd'
+//         res.send('se borro el dog')
+//     } catch(error){
+//         res.send({error:'no se borro'})
 //     }
-//}
-// CreateDog(id, name, height, weight_min, weight_max, lifeTime, temperament)
+// })
 
 module.exports = router;
