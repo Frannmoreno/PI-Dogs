@@ -30,7 +30,7 @@ export default function Home () {
     useEffect(() => {
         dispatch(getAllDogs());
         dispatch(getTemperaments());
-    },[dispatch])
+    },[])
 
     function handleClick (e) {
         window.location.reload(false);
@@ -38,6 +38,7 @@ export default function Home () {
 
     function handlerFilterCreated (e) {
         dispatch(filterCreatedDog(e.target.value))
+        setCurrentPage(1)
     }
     
     function handlerFilterTemperament (e) {
@@ -47,14 +48,12 @@ export default function Home () {
     }
 
     function handlerFilterName (e) {
-        e.preventDefault();
         dispatch(filterByName(e.target.value))
         setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
     }
 
     function handlerFilterWeight (e) {
-        e.preventDefault()
         dispatch(filterByWeight(e.target.value))
         setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
