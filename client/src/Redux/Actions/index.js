@@ -72,6 +72,13 @@ export function postDog (data){
         alert('The dog could not be created')
     }
 }
+
+export function filterByHeight(payload){
+    return {
+        type: 'FILTER_BY_HEIGHT',
+        payload
+    }
+}
  
 export function filterByName(payload) {
     return { 
